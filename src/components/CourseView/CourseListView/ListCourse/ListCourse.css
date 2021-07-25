@@ -1,0 +1,29 @@
+.course-list-element {
+  width: 80%;
+  background-color: antiquewhite;
+  height: 4rem;
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
+  position: relative;
+  margin: 1rem;
+  border-radius: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr 0.4fr;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.list-edit-btn {
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 1.8rem;
+  display: flex;
+  align-self: center;
+}
+
+.course-list-name {
+  display: inline-block;
+  white-space: nowrap;
+  /* display: inline-block; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,22 @@
+.navbar {
+    display: flex;
+    margin-top: 0.5rem;
+    margin-left: 2rem;
+    padding: 0;
+    
+    align-items: center;
+}
+
+.navbar a {
+    font-size: 1.4rem;
+    padding:0;
+    margin: 0 2rem;
+    padding-bottom: 0.5rem;
+    text-decoration: none;
+    
+}   
+
+.active {
+    background-image: linear-gradient(transparent calc(100% - 2px),#FA709A 2px);
+    text-decoration:underline;
+}

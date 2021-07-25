@@ -1,0 +1,9 @@
+.list-view-header {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr 0.4fr;
+  width: 80%;
+}
+.list-view-header p {
+  margin: 0;
+  text-align: center;
+}

@@ -1,0 +1,21 @@
+.course-add-container {
+    margin-left: auto;
+    margin-right: 2rem;
+}
+
+.course-add {
+    padding: 0.2rem;
+    font-size: 0.9rem;
+    border-radius: 0.5rem;
+    box-shadow: 1px 1px 3px #524f4f;
+    border-color: transparent;
+    cursor: pointer;
+    color: #403d4a;
+}
+
+.course-add:hover {
+    background-color: #403d4a;
+    color: antiquewhite;
+    transition: 0.3s;
+}
+

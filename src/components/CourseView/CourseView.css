@@ -1,0 +1,18 @@
+.course-view-grid {
+  margin: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.course-view-list {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.course-view-list p {
+  padding: 0 1rem;
+}

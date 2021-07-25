@@ -1,0 +1,13 @@
+
+.dropdown-label {
+    margin: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.dropdown-select {
+    padding: 0.1rem;
+    font-size: 0.85rem;
+    background-color: antiquewhite;
+    border-color:rgba(0,0,0,0.2);
+    border-radius: 5px;
+}

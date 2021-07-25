@@ -1,0 +1,22 @@
+.search-form {
+    position: relative;
+    margin-left: 1rem;
+}
+
+.search-input{
+  padding: 0.2rem;
+  width: 100%;
+  background-color: antiquewhite;
+  border-color: rgba(0,0,0,0.2);
+  border-radius: 2rem;
+  padding-left: 1.4rem;
+}
+
+.search-icon{
+    font-size: 0.9rem;
+    position: absolute;
+    left: 0.3rem;
+    top: 0.3rem;
+    color: rgba(0,0,0,0.5);
+}
+
