@@ -1,9 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useCallback } from "react";
 import "./AddEditForm.css";
-import { AddEditFormProps, Course } from "../../interfaces";
+import { AddEditFormProps } from "../../interfaces";
 import { DropdownFilterConstant } from "../../constants";
 import { MdClose } from "react-icons/md";
-import CoursesContext from "../../contexts/CoursesContext";
 
 const branchOptions = DropdownFilterConstant.branch.options
   .filter((option) => {
@@ -22,9 +21,7 @@ const yearOptions = DropdownFilterConstant.year.options
   });
 
 function AddEditForm(props: AddEditFormProps) {
-  const isDisabled = props.type === "EDIT" ? true : false;
-
-  const [coursesState, dispatch] = useContext(CoursesContext);
+  const isDisabled = props.type === "EDIT";
 
   const [filterState, setFilterState] = useState({
     name: props.course.name,
@@ -34,9 +31,9 @@ function AddEditForm(props: AddEditFormProps) {
     year: props.course.year,
   });
 
-  const submitHandler = (event: any) => {
+  const submitHandler = useCallback((event: any) => {
     event.preventDefault();
-    const newCourse: Course = {
+    const curCourse = {
       name: filterState.name,
       prof: "John Doe",
       strength: props.course.strength,
@@ -45,12 +42,10 @@ function AddEditForm(props: AddEditFormProps) {
       code: filterState.code,
       credits: filterState.credits,
     };
+    props.onSubmit(curCourse);
+  }, []);
 
-    dispatch({ type: props.type, payload: newCourse });
-    props.closeFormHandler();
-  };
-
-  const handleOnChange = (event: any) => {
+  const handleOnChange = useCallback((event: any) => {
     let value = event.target.value;
     if (event.target.name === "year" || event.target.name === "credits") {
       value = parseInt(event.target.value);
@@ -59,12 +54,12 @@ function AddEditForm(props: AddEditFormProps) {
     setFilterState((prevState) => {
       return { ...prevState, [event.target.name]: value };
     });
-  };
+  }, []);
 
   return (
     <div className="form-container">
       <form id="form" name="addCourse" onSubmit={submitHandler}>
-        <MdClose className="close-form" onClick={props.closeFormHandler} />
+        <MdClose className="close-form" onClick={props.onClose} />
         <h2>{props.type[0] + props.type.slice(1).toLowerCase()} course</h2>
         <label htmlFor="course_name">Course Name</label>
         <input
