@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import "./ListCourse.css";
-import EditForm from "../../EditForm";
+import AddEditForm from "../../../AddEditForm";
 import { Course } from "../../../../interfaces";
 import { FaEdit } from "react-icons/fa";
 
@@ -18,7 +18,11 @@ function ListCourse(props: { course: Course }) {
   return (
     <>
       {isEditFormOpen && (
-        <EditForm course={props.course} closeFormHandler={closeFormHandler} />
+        <AddEditForm
+          course={props.course}
+          closeFormHandler={closeFormHandler}
+          type={"EDIT"}
+        />
       )}
       <div className="course-list-element">
         <p>{props.course.code}</p>

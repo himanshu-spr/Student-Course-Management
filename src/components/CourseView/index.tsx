@@ -1,5 +1,5 @@
 import { filter } from "minimatch";
-import React, { useContext, useMemo } from "react";
+import React, { useContext, useCallback } from "react";
 import CoursesContext from "../../contexts/CoursesContext";
 import FilterContext from "../../contexts/FilterContext";
 import { Courses, Filters } from "../../interfaces";
@@ -40,7 +40,7 @@ const CourseView = () => {
   const [courses, coursesDispath] = useContext(CoursesContext);
   const [filters, filtersDispatch] = useContext(FilterContext);
 
-  const filteredCourses = useMemo(
+  const filteredCourses = useCallback(
     () => getFilteredCourses(courses, filters),
     [courses, filters]
   );
@@ -49,9 +49,9 @@ const CourseView = () => {
   return (
     <div className={containerClass}>
       {filters.view === "Grid" ? (
-        <CourseGridView courses={filteredCourses} />
+        <CourseGridView courses={filteredCourses()} />
       ) : (
-        <CourseListView courses={filteredCourses} />
+        <CourseListView courses={filteredCourses()} />
       )}
     </div>
   );
