@@ -18,6 +18,7 @@ const AddCourse = () => {
 
   const submitFormHandler = useCallback((course) => {
     dispatch({ type: "ADD", payload: course });
+    closeFormHandler();
   }, []);
 
   return (

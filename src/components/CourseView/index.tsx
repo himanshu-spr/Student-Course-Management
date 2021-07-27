@@ -16,6 +16,7 @@ const CourseView = () => {
     () => getFilteredCoursesHelper(courses, filters),
     [courses, filters]
   );
+
   const containerClass =
     filters.view === "Grid" ? "course-view-grid" : "course-view-list";
   return (

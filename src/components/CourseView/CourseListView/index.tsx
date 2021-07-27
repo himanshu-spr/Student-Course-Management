@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useCallback } from "react";
 import "./CourseListView.css";
 import { CourseListViewProps } from "../../../interfaces";
 import ListCourse from "./ListCourse";
 
 const CourseListView = (props: CourseListViewProps) => {
-  const coursesElement = props.courses.map((course) => {
-    return <ListCourse course={course} />;
-  });
+  const coursesElement = useCallback(
+    () =>
+      props.courses.map((course) => {
+        return <ListCourse course={course} />;
+      }),
+    [props.courses]
+  );
 
   return (
     <>
@@ -18,7 +22,7 @@ const CourseListView = (props: CourseListViewProps) => {
         <p>Year</p>
         <p>Strength</p>
       </div>
-      {coursesElement}
+      {coursesElement()}
     </>
   );
 };
