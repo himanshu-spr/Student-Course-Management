@@ -1,5 +1,5 @@
 export interface AddFormProps {
-  cancelHandler: () => void;
+  closeHandler: () => void;
   isAddFormOpen: boolean;
 }
 
