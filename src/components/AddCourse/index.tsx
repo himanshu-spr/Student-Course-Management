@@ -1,33 +1,33 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useContext } from "react";
 import "./AddCourse.css";
 import AddEditForm from "../AddEditForm";
+import { dummyCourse } from "../../constants";
+import CoursesContext from "../../contexts/CoursesContext";
 
 const AddCourse = () => {
   const [isAddFormOpen, setIsAddFormOpen] = useState(false);
+  const [coursesState, dispatch] = useContext(CoursesContext);
 
   const openHandler = useCallback(() => {
     setIsAddFormOpen(true);
-  }, [isAddFormOpen]);
+  }, []);
 
   const closeFormHandler = useCallback(() => {
     setIsAddFormOpen(false);
-  }, [isAddFormOpen]);
-  const curCourse = {
-    name: "",
-    prof: "",
-    strength: 0,
-    branch: "CSE",
-    year: 1,
-    code: "",
-    credits: 0,
-  };
+  }, []);
+
+  const submitFormHandler = useCallback((course) => {
+    dispatch({ type: "ADD", payload: course });
+  }, []);
+
   return (
     <div className="course-add-container">
       {isAddFormOpen && (
         <AddEditForm
-          closeFormHandler={closeFormHandler}
           type={"ADD"}
-          course={curCourse}
+          course={dummyCourse}
+          onSubmit={submitFormHandler}
+          onClose={closeFormHandler}
         />
       )}
       <button onClick={openHandler} className="course-add">

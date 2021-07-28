@@ -1,27 +1,35 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useContext } from "react";
 import "./ListCourse.css";
 import AddEditForm from "../../../AddEditForm";
 import { Course } from "../../../../interfaces";
 import { FaEdit } from "react-icons/fa";
+import CoursesContext from "../../../../contexts/CoursesContext";
 
 function ListCourse(props: { course: Course }) {
   const [isEditFormOpen, setIsEditFormOpen] = useState(false);
+  const [coursesState, dispatch] = useContext(CoursesContext);
 
   const openFormHandler = useCallback(() => {
     setIsEditFormOpen(true);
-  }, [isEditFormOpen]);
+  }, []);
 
   const closeFormHandler = useCallback(() => {
     setIsEditFormOpen(false);
-  }, [isEditFormOpen]);
+  }, []);
+
+  const submitFormHandler = useCallback((course) => {
+    dispatch({ type: "EDIT", payload: course });
+    closeFormHandler();
+  }, []);
 
   return (
     <>
       {isEditFormOpen && (
         <AddEditForm
           course={props.course}
-          closeFormHandler={closeFormHandler}
           type={"EDIT"}
+          onClose={closeFormHandler}
+          onSubmit={submitFormHandler}
         />
       )}
       <div className="course-list-element">

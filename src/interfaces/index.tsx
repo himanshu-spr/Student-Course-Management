@@ -1,7 +1,3 @@
-export interface AddFormProps {
-  closeHandler: () => void;
-}
-
 export interface DropdownFilterProps {
   name: string;
   label: string;
@@ -72,13 +68,9 @@ export interface CourseListViewProps {
   courses: Course[];
 }
 
-export interface EditFormProps {
-  course: Course;
-  closeFormHandler: () => void;
-}
-
 export interface AddEditFormProps {
   course: Course;
-  closeFormHandler: () => void;
   type: string;
+  onClose: () => void;
+  onSubmit: (course: Course) => void;
 }
