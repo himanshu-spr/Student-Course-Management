@@ -34,18 +34,13 @@ const AddEditForm = (props: AddEditFormProps) => {
   const submitHandler = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      const curCourse = {
-        name: courseState.name,
+      props.onSubmit({
+        ...courseState,
         prof: "John Doe",
         strength: props.course.strength,
-        branch: courseState.branch,
-        year: courseState.year,
-        code: courseState.code,
-        credits: courseState.credits,
-      };
-      props.onSubmit(curCourse);
+      });
     },
-    [courseState]
+    [courseState, props.onSubmit]
   );
 
   const handleOnChange = useCallback(

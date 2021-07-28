@@ -1,18 +1,10 @@
-import React, { useCallback } from "react";
+import React from "react";
 import "./CourseGridView.css";
 import { CourseGridViewProps } from "../../../interfaces";
-import GridCourse from "./GridCourse";
+import RenderCourses from "../RenderCourses";
 
 const CourseGridView = (props: CourseGridViewProps) => {
-  const coursesElement = useCallback(
-    () =>
-      props.courses.map((course) => {
-        return <GridCourse course={course} />;
-      }),
-    [props.courses]
-  );
-
-  return <>{coursesElement()}</>;
+  return <RenderCourses courses={props.courses} view={"Grid"} />;
 };
 
 export default CourseGridView;

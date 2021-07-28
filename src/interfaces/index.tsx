@@ -74,3 +74,8 @@ export interface AddEditFormProps {
   onClose: () => void;
   onSubmit: (course: Course) => void;
 }
+
+export interface RenderCoursesProps {
+  courses: Course[];
+  view: string;
+}

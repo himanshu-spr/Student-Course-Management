@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useCallback } from "react";
 import "./SearchFilter.css";
 import { FaSearch } from "react-icons/fa";
 import FilterContext from "../../contexts/FilterContext";
@@ -6,10 +6,13 @@ import FilterContext from "../../contexts/FilterContext";
 const SearchFilter = () => {
   const [state, dispatch] = useContext(FilterContext);
 
-  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    dispatch({ type: "MODIFY_SEARCH", payload: event.target.value });
-  };
+  const changeHandler = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      event.preventDefault();
+      dispatch({ type: "MODIFY_SEARCH", payload: event.target.value });
+    },
+    []
+  );
 
   return (
     <>

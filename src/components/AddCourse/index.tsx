@@ -16,10 +16,13 @@ const AddCourse = () => {
     setIsAddFormOpen(false);
   }, []);
 
-  const submitFormHandler = useCallback((course) => {
-    dispatch({ type: "ADD", payload: course });
-    closeFormHandler();
-  }, []);
+  const submitFormHandler = useCallback(
+    (course) => {
+      dispatch({ type: "ADD", payload: course });
+      closeFormHandler();
+    },
+    [closeFormHandler]
+  );
 
   return (
     <div className="course-add-container">
