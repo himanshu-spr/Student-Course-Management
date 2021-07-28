@@ -6,14 +6,16 @@ import "./FilterBar.css";
 import { DropDownData } from "../../interfaces";
 
 const FilterBar = () => {
-  const [dropDownData, setDropDownData] = useState<DropDownData>(
-    {} as DropDownData
-  );
+  const [dropDownData, setDropDownData] = useState<DropDownData | null>(null);
   const getData = async () => {
-    const data = await getFiltersHelper();
-    setDropDownData((prevState) => {
-      return { ...prevState, ...data };
-    });
+    try {
+      const data = await getFiltersHelper();
+      setDropDownData((prevState) => {
+        return { ...prevState, ...data };
+      });
+    } catch (err) {
+      alert(err);
+    }
   };
   useEffect(() => {
     getData();
@@ -21,7 +23,7 @@ const FilterBar = () => {
 
   return (
     <>
-      {Object.keys(dropDownData).length !== 0 ? (
+      {dropDownData ? (
         <div className="filter-bar">
           <DropdownFilter {...dropDownData.view} />
 
