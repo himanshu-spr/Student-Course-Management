@@ -5,10 +5,7 @@ export interface DropdownFilterProps {
 }
 
 export interface DropDownData {
-  view: DropdownFilterProps;
-  year: DropdownFilterProps;
-  branch: DropdownFilterProps;
-  sort: DropdownFilterProps;
+  [key: string]: DropdownFilterProps;
 }
 
 export interface Courses {
