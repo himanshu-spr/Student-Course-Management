@@ -1,6 +1,6 @@
 import React, { useMemo, useContext, useCallback } from "react";
 import "./DropdownFilter.css";
-import { DropdownFilterProps, FilterContextProps } from "../../interfaces";
+import { DropdownFilterProps } from "../../interfaces";
 import FilterContext from "../../contexts/FilterContext";
 
 const getOptions = (options: string[]) => {

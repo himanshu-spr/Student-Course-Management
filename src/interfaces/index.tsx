@@ -4,6 +4,13 @@ export interface DropdownFilterProps {
   options: string[];
 }
 
+export interface DropDownData {
+  view: DropdownFilterProps;
+  year: DropdownFilterProps;
+  branch: DropdownFilterProps;
+  sort: DropdownFilterProps;
+}
+
 export interface Courses {
   [key: string]: {
     name: string;

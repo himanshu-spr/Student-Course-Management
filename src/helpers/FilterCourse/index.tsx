@@ -1,4 +1,4 @@
-import { Courses, Filters } from "../interfaces";
+import { Courses, Filters } from "../../interfaces";
 
 export const getFilteredCourses = (courses: Courses, filters: Filters) => {
   const filteredCourses = [];

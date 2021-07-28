@@ -1,0 +1,22 @@
+{
+  "view": {
+    "name": "view",
+    "label": "View By",
+    "options": ["Grid", "List"]
+  },
+  "year": {
+    "name": "year",
+    "label": "Year",
+    "options": ["All Years", "1", "2", "3", "4"]
+  },
+  "branch": {
+    "name": "branch",
+    "label": "Branch",
+    "options": ["All Branches", "CSE", "ME", "ECE", "EE", "CE"]
+  },
+  "sort": {
+    "name": "sort",
+    "label": "Sort By",
+    "options": ["Relevance", "Strength - Low to High", "Strength - High to Low"]
+  }
+}
