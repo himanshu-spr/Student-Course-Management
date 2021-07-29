@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import DropdownFilter from "../DropdownFilter";
 import SearchFilter from "../SearchFilter";
 import { getFilters as getFiltersHelper } from "../../helpers/GetFilters";
@@ -7,19 +7,18 @@ import { DropDownData } from "../../interfaces";
 
 const FilterBar = () => {
   const [dropDownData, setDropDownData] = useState<DropDownData | null>(null);
-  const getData = async () => {
+  const getData = useCallback(async () => {
     try {
       const data = await getFiltersHelper();
-      setDropDownData((prevState) => {
-        return { ...prevState, ...data };
-      });
+      setDropDownData({ ...data });
     } catch (err) {
       alert(err);
     }
-  };
+  }, []);
+
   useEffect(() => {
     getData();
-  }, []);
+  }, [getData]);
 
   return (
     <>
