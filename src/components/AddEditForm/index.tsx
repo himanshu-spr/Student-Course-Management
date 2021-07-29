@@ -34,11 +34,13 @@ const AddEditForm = (props: AddEditFormProps) => {
   const submitHandler = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      props.onSubmit({
-        ...courseState,
-        prof: "John Doe",
-        strength: props.course.strength,
-      });
+      props.onSubmit
+        ? props.onSubmit({
+            ...courseState,
+            prof: "John Doe",
+            strength: props.course.strength,
+          })
+        : alert("error");
     },
     [courseState, props.onSubmit]
   );
