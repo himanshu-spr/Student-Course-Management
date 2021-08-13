@@ -20,10 +20,10 @@ const yearOptions = DropdownFilterConstant.year.options
     return <option value={option}>{option}</option>;
   });
 
-function AddEditForm(props: AddEditFormProps) {
+const AddEditForm = (props: AddEditFormProps) => {
   const isDisabled = props.type === "EDIT";
 
-  const [filterState, setFilterState] = useState({
+  const [courseState, setCourseState] = useState({
     name: props.course.name,
     code: props.course.code,
     credits: props.course.credits,
@@ -31,30 +31,36 @@ function AddEditForm(props: AddEditFormProps) {
     year: props.course.year,
   });
 
-  const submitHandler = useCallback((event: any) => {
-    event.preventDefault();
-    const curCourse = {
-      name: filterState.name,
-      prof: "John Doe",
-      strength: props.course.strength,
-      branch: filterState.branch,
-      year: filterState.year,
-      code: filterState.code,
-      credits: filterState.credits,
-    };
-    props.onSubmit(curCourse);
-  }, []);
+  const submitHandler = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      props.onSubmit
+        ? props.onSubmit({
+            ...courseState,
+            prof: "John Doe",
+            strength: props.course.strength,
+          })
+        : alert("error");
+    },
+    [courseState, props.onSubmit]
+  );
 
-  const handleOnChange = useCallback((event: any) => {
-    let value = event.target.value;
-    if (event.target.name === "year" || event.target.name === "credits") {
-      value = parseInt(event.target.value);
-    }
-
-    setFilterState((prevState) => {
-      return { ...prevState, [event.target.name]: value };
-    });
-  }, []);
+  const handleOnChange = useCallback(
+    (
+      event:
+        | React.ChangeEvent<HTMLInputElement>
+        | React.ChangeEvent<HTMLSelectElement>
+    ) => {
+      let value: number | string = event.target.value;
+      if (event.target.name === "year" || event.target.name === "credits") {
+        value = parseInt(event.target.value);
+      }
+      setCourseState((prevState) => {
+        return { ...prevState, [event.target.name]: value };
+      });
+    },
+    [courseState]
+  );
 
   return (
     <div className="form-container">
@@ -66,7 +72,7 @@ function AddEditForm(props: AddEditFormProps) {
           type="text"
           name="name"
           className="form-input"
-          value={filterState.name}
+          value={courseState.name}
           onChange={handleOnChange}
         />
 
@@ -77,7 +83,7 @@ function AddEditForm(props: AddEditFormProps) {
               type="text"
               name="code"
               className="form-input"
-              value={filterState.code}
+              value={courseState.code}
               onChange={handleOnChange}
               disabled={isDisabled}
             />
@@ -88,7 +94,7 @@ function AddEditForm(props: AddEditFormProps) {
               type="number"
               name="credits"
               className="form-input"
-              value={filterState.credits}
+              value={courseState.credits}
               onChange={handleOnChange}
             />
           </div>
@@ -98,7 +104,7 @@ function AddEditForm(props: AddEditFormProps) {
         <select
           name="branch"
           className="form-select"
-          value={filterState.branch}
+          value={courseState.branch}
           onChange={handleOnChange}
         >
           {branchOptions}
@@ -108,7 +114,7 @@ function AddEditForm(props: AddEditFormProps) {
         <select
           name="year"
           className="form-select"
-          value={filterState.year}
+          value={courseState.year}
           onChange={handleOnChange}
         >
           {yearOptions}
@@ -120,6 +126,6 @@ function AddEditForm(props: AddEditFormProps) {
       </form>
     </div>
   );
-}
+};
 
 export default AddEditForm;

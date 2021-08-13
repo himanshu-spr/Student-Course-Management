@@ -17,10 +17,13 @@ function GridCourse(props: { course: Course }) {
     setIsEditFormOpen(false);
   }, []);
 
-  const submitFormHandler = useCallback((course) => {
-    dispatch({ type: "EDIT", payload: course });
-    closeFormHandler();
-  }, []);
+  const submitFormHandler = useCallback(
+    (course) => {
+      dispatch({ type: "EDIT", payload: course });
+      closeFormHandler();
+    },
+    [closeFormHandler]
+  );
 
   return (
     <>
