@@ -1,11 +1,9 @@
-import { filter } from "minimatch";
 import React, { useContext, useCallback } from "react";
 import CoursesContext from "../../contexts/CoursesContext";
 import FilterContext from "../../contexts/FilterContext";
-import { Courses, Filters } from "../../interfaces";
 import CourseListView from "./CourseListView";
 import CourseGridView from "./CourseGridView";
-import { getFilteredCourses as getFilteredCoursesHelper } from "../../helpers";
+import { getFilteredCourses as getFilteredCoursesHelper } from "../../helpers/FilterCourse";
 import "./CourseView.css";
 
 const CourseView = () => {

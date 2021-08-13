@@ -4,6 +4,10 @@ export interface DropdownFilterProps {
   options: string[];
 }
 
+export interface DropDownData {
+  [key: string]: DropdownFilterProps;
+}
+
 export interface Courses {
   [key: string]: {
     name: string;
